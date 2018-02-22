@@ -52,6 +52,10 @@ RUN pip --no-cache-dir install \
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
 
+# Add dark theme to notebooks
+RUN mkdir /root/.jupyter/custom && curl -o /root/.jupyter/custom/custom.css \
+    https://raw.githubusercontent.com/powerpak/jupyter-dark-theme/master/custom.css
+
 # Jupyter has issues with being run directly:
 #   https://github.com/ipython/ipython/issues/7062
 # We just add a little wrapper script.
