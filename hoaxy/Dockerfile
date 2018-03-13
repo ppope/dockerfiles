@@ -9,7 +9,7 @@ RUN conda install -y \
         gunicorn \
         networkx \
         pandas \
-        psycopg2 \
+        "psycopg2<2.7" \
         python-dateutil \
         pytz \
         pyyaml \
@@ -40,3 +40,7 @@ WORKDIR ..
 RUN rm -rf pylucene
 
 RUN git clone https://github.com/IUNetSci/hoaxy-backend.git && cd hoaxy-backend && python setup.py install
+
+ENV HOAXY_HOME=/home/.hoaxy
+
+EXPOSE 5432
