@@ -21,6 +21,10 @@ RUN conda install -y \
         gxx_linux-64 \
         make
 
+#Install psql client and cron
+RUN apt-get update \
+    && apt-get install postgresql-client cron
+
 #Installation of pylucene referenced from
 #https://bitbucket.org/coady/docker/src/tip/pylucene/Dockerfile?fileviewer=file-view-default
 #Edited to use pylucene 4.10.1
